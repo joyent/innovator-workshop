@@ -1,0 +1,14 @@
+{
+  "name": "serializer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "influx": "4.x.x",
+    "items": "2.x.x",
+    "lodash.flattendeep": "4.x.x",
+    "seneca": "3.x.x"
+  }
+}
