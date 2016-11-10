@@ -32,4 +32,4 @@ Open the slides and read learn about Consul & ContainerPilot
 Each service is now using ContainerPilot and has health monitoring configured. Additionally, each service now has the dependent services configured. Your challenge is to update the `docker-compose.yml` file to link the consul service and set the `CONSUL_HOST` environment variable for each of the services (not consul itself).
 
 
-## Next Up: [final](../final/README.md)
+## Next Up: [Challenge 12](../challenge12/README.md)

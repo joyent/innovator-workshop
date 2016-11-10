@@ -13,8 +13,8 @@ environment:
 4. Launch the frontend and view the charts flowing-in
 
 
-## Bonus
+## Challenge 12
 
 Scale the services independently (`docker-compose scale`). You can also kill individual services (`docker stop` or `docker kill`) and watch their dependent services respond gracefully.
 
-## Next Up: [Bonus](../bonus/README.md)
+## Next Up: [Challenge 13](../challenge13/README.md)
