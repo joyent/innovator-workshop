@@ -8,14 +8,13 @@
 Clone the workshop repository to your local machine:
 
 ```bash
-git clone https://github.com/joyent/containersummit-workshop
-cd containersummit-workshop
+git clone https://github.com/joyent/innovator-workshop
+cd innovator-workshop
 yarn/npm install
 # Install Docker if you haven't already
 ```
 </script></section>
-<section data-markdown><script type="text/template">
-## Building and scaling microservices with ContainerPilot and Node.js
+<section data-markdown><script type="text/template">## Node.js Microservices using Docker with ContainerPilot
 
 * Adapted from [_microservices-iot_](https://github.com/nearform/micro-services-tutorial-iot)
 * Adapted from [_microservices-workshop_](https://github.com/lloydbenson/microservices-workshop)
@@ -32,7 +31,7 @@ Presented by Wyatt Preul & Shubhra Kar
 <section data-markdown><script type="text/template">
 ### What we are Building
 
-* Microservices that pull data from SmartThings service
+* Microservices that pull data from a service running on Triton
 * Data is serialized and saved in InfluxDB
 * Frontend presents the data as charts with live updates using WebSockets
 </script></section>
@@ -43,6 +42,25 @@ Presented by Wyatt Preul & Shubhra Kar
 * Service discovery
 * Microservices
 * Autopilot Pattern
+</script></section>
+<section data-markdown><script type="text/template">### Syllabus: Part 1
+
+1. Install dependencies and start frontend
+1. Pull InfluxDB and run inside Docker
+1. Connect InfluxDB to serializer service
+1. Connect frontend to serializer service
+1. Use docker-compose to run services
+1. Connect temperature service to serializer
+1. Connect humidity service to serializer
+1. Connect motion service to serializer and use environment_file
+1. Try to scale serializer service
+</script></section>
+<section data-markdown><script type="text/template">### Syllabus: Part 2
+
+1. Implement ContainerPilot and scale services
+1. Deploying containers to Triton
+1. Reviewing my.joyent.com
+1. Understanding CNS
 </script></section>
 <section data-markdown><script type="text/template">
 ### Challenge 1

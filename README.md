@@ -5,9 +5,6 @@
 
 ![image](./images/final.png)
 
-#### Logging to Manta
-
-
 ### Running the slides
 
 ```sh
@@ -19,6 +16,7 @@ npm start
 
 #### Microservices running in Docker on Triton
 
+a. Part 1
 1. Install dependencies and start frontend
 1. Pull InfluxDB and run inside Docker
 1. Connect InfluxDB to serializer service
@@ -29,6 +27,11 @@ npm start
 1. Connect motion service to serializer and use environment_file
 1. Try to scale serializer service
 1. Implement ContainerPilot and scale services
+
+b. Part 2
+1. Deploy containers to Triton
+1. Understanding CNS
+1. Reviewing my.joyent.com
 
 
 ## Next Up: [Challenge 1](./challenge1/README.md)
