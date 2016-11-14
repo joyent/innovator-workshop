@@ -43,7 +43,8 @@ Presented by Wyatt Preul & Shubhra Kar
 * Microservices
 * Autopilot Pattern
 </script></section>
-<section data-markdown><script type="text/template">### Syllabus: Part 1
+<section data-markdown><script type="text/template">
+### Syllabus: Part 1
 
 1. Install dependencies and start frontend
 1. Pull InfluxDB and run inside Docker
@@ -55,7 +56,8 @@ Presented by Wyatt Preul & Shubhra Kar
 1. Connect motion service to serializer and use environment_file
 1. Try to scale serializer service
 </script></section>
-<section data-markdown><script type="text/template">### Syllabus: Part 2
+<section data-markdown><script type="text/template">
+### Syllabus: Part 2
 
 1. Implement ContainerPilot and scale services
 1. Deploying containers to Triton
@@ -76,12 +78,14 @@ Presented by Wyatt Preul & Shubhra Kar
 * hapi - server framework (ask me if you have ?)
 * rickshaw charts - charting for UI
 </script></section>
-<section data-markdown><script type="text/template">### hapi
+<section data-markdown><script type="text/template">
+### hapi
 
 * plugin architecture
 * works well for serving frontend assets and RESTful services
 </script></section>
-<section data-markdown><script type="text/template">### Challenge 2
+<section data-markdown><script type="text/template">
+### Challenge 2
 
 * Use docker to pull the tutum/influxdb image
 * Create and run an influxdb container and create a `sensors` database
@@ -174,6 +178,63 @@ Presented by Wyatt Preul & Shubhra Kar
 
 * All services are mostly updated to use Consul and ContainerPilot
 * Update `docker-compose.yml` entries to link consul and set the `CONSUL_HOST` environment variable
+</script></section>
+<section data-markdown><script type="text/template">
+### Challenge 12
+
+* Use `docker compose scale` to scale individual services
+* (scaling in this case means running more instances of a service)
+</script></section>
+<section data-markdown><script type="text/template">
+### Triton
+
+* Install trion cli: `npm i -g triton`
+* Create profile: `triton profile create`
+* Verify profile works: `triton info`
+</script></section>
+<section data-markdown><script type="text/template">
+### Challenge 13
+
+* Setup docker environment variables for triton
+```
+eval $(triton env)
+```
+
+* Deploy services to triton
+</script></section>
+<section data-markdown><script type="text/template">
+### Triton Docker Build
+
+* Avoid building images using triton
+* Instead, pull from a docker registry, like docker hub
+* Faster, and more stable
+</script></section>
+<section data-markdown><script type="text/template">
+### Challenge 14
+
+* Configure services to use CNS for locating consul service
+* Scale consul cluster
+</script></section>
+<section data-markdown><script type="text/template">
+### CNS
+
+* Creates an Address record for each service with a cns label (`triton instance get`)
+* Static value tied to user ID
+* Can setup CNAME records to make the names friendlier (consul.workshop.host)
+</script></section>
+<section data-markdown><script type="text/template">
+### Building and publishing slides example
+
+* `docker build -t USER/slides:latest .`
+* `docker push USER/slides:latest`
+* `docker run -d -l "triton.cns.services=slides" -e "PORT=80" d0cker/slides:latest`
+</script></section>
+<section data-markdown><script type="text/template">
+### my.joyent.com
+
+* View usage
+* View docker images in use
+* View labels and tags
 </script></section>
 <section data-markdown><script type="text/template">
 ### Contact Details

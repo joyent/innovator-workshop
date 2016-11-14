@@ -1,0 +1,17 @@
+{
+  "name": "slides",
+  "version": "1.0.0",
+  "description": "innovator workshop slides",
+  "keywords": [],
+  "author": "wyatt",
+  "license": "MPL-2.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "hapi": "15.x.x",
+    "hapi-reveal": "3.x.x",
+    "inert": "4.x.x",
+    "vision": "4.x.x"
+  }
+}

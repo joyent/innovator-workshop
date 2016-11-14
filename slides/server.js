@@ -6,18 +6,8 @@ const HapiReveal = require('hapi-reveal');
 const Inert = require('inert');
 const Vision = require('vision');
 
-const serverConfig = {
-  connections: {
-    routes: {
-      files: {
-        relativeTo: Path.join(__dirname, '..')
-      }
-    }
-  }
-};
-
-const server = new Hapi.Server(serverConfig);
-server.connection({ port: 8080 });
+const server = new Hapi.Server();
+server.connection({ port: process.env.PORT || 8080 });
 
 server.register([Vision, Inert, HapiReveal], (err) => {
   if (err) {

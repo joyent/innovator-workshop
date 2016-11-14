@@ -49,6 +49,7 @@ Presented by Wyatt Preul & Shubhra Kar
 * Autopilot Pattern
 
 
+
 ### Syllabus: Part 1
 
 1. Install dependencies and start frontend
@@ -60,6 +61,7 @@ Presented by Wyatt Preul & Shubhra Kar
 1. Connect humidity service to serializer
 1. Connect motion service to serializer and use environment_file
 1. Try to scale serializer service
+
 
 
 ### Syllabus: Part 2
@@ -86,10 +88,12 @@ Presented by Wyatt Preul & Shubhra Kar
 * rickshaw charts - charting for UI
 
 
+
 ### hapi
 
 * plugin architecture
 * works well for serving frontend assets and RESTful services
+
 
 
 ### Challenge 2
@@ -198,6 +202,71 @@ Presented by Wyatt Preul & Shubhra Kar
 
 * All services are mostly updated to use Consul and ContainerPilot
 * Update `docker-compose.yml` entries to link consul and set the `CONSUL_HOST` environment variable
+
+
+
+### Challenge 12
+
+* Use `docker compose scale` to scale individual services
+* (scaling in this case means running more instances of a service)
+
+
+
+### Triton
+
+* Install trion cli: `npm i -g triton`
+* Create profile: `triton profile create`
+* Verify profile works: `triton info`
+
+
+
+### Challenge 13
+
+* Setup docker environment variables for triton
+```
+eval $(triton env)
+```
+
+* Deploy services to triton
+
+
+
+### Triton Docker Build
+
+* Avoid building images using triton
+* Instead, pull from a docker registry, like docker hub
+* Faster, and more stable
+
+
+
+### Challenge 14
+
+* Configure services to use CNS for locating consul service
+* Scale consul cluster
+
+
+
+### CNS
+
+* Creates an Address record for each service with a cns label (`triton instance get`)
+* Static value tied to user ID
+* Can setup CNAME records to make the names friendlier (consul.workshop.host)
+
+
+
+### Building and publishing slides example
+
+* `docker build -t USER/slides:latest .`
+* `docker push USER/slides:latest`
+* `docker run -d -l "triton.cns.services=slides" -e "PORT=80" USER/slides:latest`
+
+
+
+### my.joyent.com
+
+* View usage
+* View docker images in use
+* View labels and tags
 
 
 

@@ -1,0 +1,9 @@
+slides:
+  image: d0cker/slides
+  restart: always
+  labels:
+    - triton.cns.services=slides
+  ports:
+    - "80:80"
+  environment:
+    - PORT=80
