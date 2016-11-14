@@ -81,10 +81,15 @@ Presented by Wyatt Preul & Shubhra Kar
 
 ### Modules used for frontend
 
-* WebSockets - realtime data updates from server
+* WebSocket Stream - realtime data updates from server
 * hapi - server framework (ask me if you have ?)
 * rickshaw charts - charting for UI
 
+
+### hapi
+
+* plugin architecture
+* works well for serving frontend assets and RESTful services
 
 
 ### Challenge 2
@@ -112,7 +117,7 @@ Presented by Wyatt Preul & Shubhra Kar
 
 ### Challenge 3 - microservices?
 
-* Not a new concept; see unix
+* Not a new concept; see the unix way
 * Small, focused, decoupled components
 * Independently deployable
 * Well suited for Node.js
@@ -175,7 +180,7 @@ Presented by Wyatt Preul & Shubhra Kar
 
 * Implements [Autopilot Pattern](http://autopilotpattern.io/)
 * Hooks for application running in docker (preStart, preStop, postStop)
-* Makes it trivial to register service with Consul
+* Register services with Consul
 * Notifies application when dependencies change in Consul
 
 
@@ -185,13 +190,13 @@ Presented by Wyatt Preul & Shubhra Kar
 * Alternative to loadbalancer (managed by developers)
 * Need to be notified when dependent service changes
 * Health monitoring our service
-* Register our services with consul and make it easy to find our dependencies
+* Register our services with Consul and make it easy to find our dependencies
 
 
 
 ### Challenge 11
 
-* All services are mostly updated to use consul and ContainerPilot
+* All services are mostly updated to use Consul and ContainerPilot
 * Update `docker-compose.yml` entries to link consul and set the `CONSUL_HOST` environment variable
 
 

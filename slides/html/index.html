@@ -72,12 +72,16 @@ Presented by Wyatt Preul & Shubhra Kar
 <section data-markdown><script type="text/template">
 ### Modules used for frontend
 
-* WebSockets - realtime data updates from server
+* WebSocket Stream - realtime data updates from server
 * hapi - server framework (ask me if you have ?)
 * rickshaw charts - charting for UI
 </script></section>
-<section data-markdown><script type="text/template">
-### Challenge 2
+<section data-markdown><script type="text/template">### hapi
+
+* plugin architecture
+* works well for serving frontend assets and RESTful services
+</script></section>
+<section data-markdown><script type="text/template">### Challenge 2
 
 * Use docker to pull the tutum/influxdb image
 * Create and run an influxdb container and create a `sensors` database
@@ -99,7 +103,7 @@ Presented by Wyatt Preul & Shubhra Kar
 <section data-markdown><script type="text/template">
 ### Challenge 3 - microservices?
 
-* Not a new concept; see unix
+* Not a new concept; see the unix way
 * Small, focused, decoupled components
 * Independently deployable
 * Well suited for Node.js
@@ -154,7 +158,7 @@ Presented by Wyatt Preul & Shubhra Kar
 
 * Implements [Autopilot Pattern](http://autopilotpattern.io/)
 * Hooks for application running in docker (preStart, preStop, postStop)
-* Makes it trivial to register service with Consul
+* Register services with Consul
 * Notifies application when dependencies change in Consul
 </script></section>
 <section data-markdown><script type="text/template">
@@ -163,12 +167,12 @@ Presented by Wyatt Preul & Shubhra Kar
 * Alternative to loadbalancer (managed by developers)
 * Need to be notified when dependent service changes
 * Health monitoring our service
-* Register our services with consul and make it easy to find our dependencies
+* Register our services with Consul and make it easy to find our dependencies
 </script></section>
 <section data-markdown><script type="text/template">
 ### Challenge 11
 
-* All services are mostly updated to use consul and ContainerPilot
+* All services are mostly updated to use Consul and ContainerPilot
 * Update `docker-compose.yml` entries to link consul and set the `CONSUL_HOST` environment variable
 </script></section>
 <section data-markdown><script type="text/template">
