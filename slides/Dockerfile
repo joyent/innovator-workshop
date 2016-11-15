@@ -20,5 +20,8 @@ RUN apk del python && \
     apk del make && \
     apk del g++
 
+ENV PORT=80
+EXPOSE 80
+
 WORKDIR /opt/slides/
 CMD ["node", "server.js"]

@@ -1,5 +1,5 @@
 slides:
-  image: d0cker/slides
+  image: d0cker/slides:latest
   restart: always
   labels:
     - triton.cns.services=slides
