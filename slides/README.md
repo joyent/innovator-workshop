@@ -16,12 +16,154 @@ yarn/npm install
 ```
 
 
-## Node.js Microservices using Docker with ContainerPilot
+### Concepts Presented
 
-* Adapted from [_microservices-iot_](https://github.com/nearform/micro-services-tutorial-iot)
-* Adapted from [_microservices-workshop_](https://github.com/lloydbenson/microservices-workshop)
+* Microservices with Node.js
+* Containers with Docker
+* Service discovery with Consul
+* Autopilot Pattern with ContainerPilot
 
-Presented by Wyatt Preul & Shubhra Kar
+
+
+### Syllabus: Part 1
+
+1. Install Docker and Node.js
+1. Docker introduction
+1. Docker on Triton
+1. Triton CLI setup
+1. Deploying a Docker container to Triton
+1. Troubleshooting Docker on Triton
+
+
+
+### Syllabus: Part 2
+
+1. Install dependencies and start frontend
+1. Pull InfluxDB and run inside Docker
+1. Connect InfluxDB to serializer service
+1. Connect frontend to serializer service
+1. Use docker-compose to run services
+1. Connect temperature service to serializer
+1. Connect humidity service to serializer
+1. Connect motion service to serializer and use environment_file
+1. Try to scale serializer service
+
+
+
+### Syllabus: Part 3
+
+1. Implement ContainerPilot and scale services
+1. Deploying containers to Triton
+1. Reviewing my.joyent.com
+1. Understanding CNS
+
+
+
+### Syllabus: Part 4 - Manta
+
+1. Pushing objects to Manta
+1. Executing Manta jobs
+
+
+
+## Part 1 - Docker and Triton
+
+
+
+### Install Docker & Node.js
+
+* https://www.docker.com/products/docker
+* nvm - `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash`
+
+
+
+### Docker Introduction
+
+* OS level virtualization
+* Allows containers close access to hardware
+* Increased performance over KVM/other hardware virtualization solutions
+
+
+
+### Docker Terminology
+
+* Image: result of `docker build`, can be layered on top of each other, are basis for containers
+* Container: runtime instance of an image: `docker run`
+* Registry: hosted service for storing and serving images: `docker push` and `docker pull`
+* Host: VM or physical machine running the docker daemon process, where containers will be running
+
+
+
+### Dockerfile
+
+* Defines manual steps to build an image
+
+```
+FROM mhart/alpine-node:6.9.1
+COPY package.json /opt/slides/
+RUN cd /opt/slides && npm install
+WORKDIR /opt/slides/
+CMD ["node", "server.js"]
+```
+
+
+
+### Docker on Triton
+
+* The datacenter is the docker host
+* Specify RAM/CPU/storage for each container
+* Docker containers can be managed by Docker CLI or CloudAPI
+
+
+
+### Docker Networking with Triton
+
+* Ability to assign a real public IP to containers
+* Firewall setup for containers
+* Integration with container naming service (CNS). Name server configured with address records for containers. More later!
+
+
+
+### Docker Registry Support
+
+* Triton supports the use of Docker images maintained in the following types of registries
+  - Docker Hub's public registry
+  - Docker Hub's private registry
+  - Self-hosted v1 and v2 Docker registry, including Docker Trusted Registry
+  - quay.io v1 Docker registry
+  - jFrog Artifactory v1 and v2 Docker registry
+* You may connect to multiple registries at the same time and pull images from them simultaneously
+
+
+
+### Triton CLI setup
+
+* Install triton cli: `npm i -g triton`
+* Create profile: `triton profile create`
+* Verify profile works: `triton info`
+* Configure docker environment: `eval $(triton env)`
+
+
+
+### Deploying a Docker container to Triton
+
+* Run an existing image:
+```
+docker run -it --rm busybox
+```
+* Check the instances running: `triton instances`
+* Exit the container and it will be removed.
+
+
+
+### Troubleshooting Docker on Triton
+
+* Examine docker logs for the container `docker logs`
+* Monitor resource usage in my.joyent.com
+
+
+
+## Part 2 - Node.js Microservices and Docker
 
 
 
@@ -38,38 +180,6 @@ Presented by Wyatt Preul & Shubhra Kar
 * Microservices that pull data from a service running on Triton
 * Data is serialized and saved in InfluxDB
 * Frontend presents the data as charts with live updates using WebSockets
-
-
-
-### Concepts Presented
-
-* Containers
-* Service discovery
-* Microservices
-* Autopilot Pattern
-
-
-
-### Syllabus: Part 1
-
-1. Install dependencies and start frontend
-1. Pull InfluxDB and run inside Docker
-1. Connect InfluxDB to serializer service
-1. Connect frontend to serializer service
-1. Use docker-compose to run services
-1. Connect temperature service to serializer
-1. Connect humidity service to serializer
-1. Connect motion service to serializer and use environment_file
-1. Try to scale serializer service
-
-
-
-### Syllabus: Part 2
-
-1. Implement ContainerPilot and scale services
-1. Deploying containers to Triton
-1. Reviewing my.joyent.com
-1. Understanding CNS
 
 
 
@@ -173,6 +283,10 @@ Presented by Wyatt Preul & Shubhra Kar
 
 
 
+## Part 3 - Autopilot Pattern with ContainerPilot
+
+
+
 ### Consul
 
 * Service catalog/registry
@@ -214,7 +328,7 @@ Presented by Wyatt Preul & Shubhra Kar
 
 ### Triton
 
-* Install trion cli: `npm i -g triton`
+* Install triton cli: `npm i -g triton`
 * Create profile: `triton profile create`
 * Verify profile works: `triton info`
 
@@ -267,6 +381,11 @@ eval $(triton env)
 * View usage
 * View docker images in use
 * View labels and tags
+
+
+
+## Part 4 - Manta
+
 
 
 
